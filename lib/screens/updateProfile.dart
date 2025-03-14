@@ -155,7 +155,7 @@ class _EditProfilePageState extends State<UpdateProfileScreen> {
               fontFamily: 'Poppins'
             )
         ),
-        backgroundColor: const Color(0xFF755DC1),
+        backgroundColor: const Color(0xFF007dd8),
         iconTheme: const IconThemeData(color: Colors.white),
       ),
       body: SingleChildScrollView(
@@ -430,7 +430,7 @@ class _EditProfilePageState extends State<UpdateProfileScreen> {
                           }
                         },
                         style: ElevatedButton.styleFrom(
-                            backgroundColor: const Color(0xFF755DC1),
+                            backgroundColor: const Color(0xFF007dd8),
                             side: BorderSide.none,
                             shape: const StadiumBorder()),
                         child: const Text("Save",

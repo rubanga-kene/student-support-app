@@ -197,7 +197,7 @@ class _RegisterPageState extends State<RegisterPage> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        backgroundColor: Colors.deepPurple[200],
+        backgroundColor: Colors.blueAccent[100],
         body: Container(
           decoration: const BoxDecoration(
             image: DecorationImage(
@@ -703,7 +703,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         bottom: 10,
                       ),
                       decoration: BoxDecoration(
-                          color: const Color(0xFF755DC1),
+                          color: const Color(0xFF007dd8),
                         borderRadius: BorderRadius.circular(10),
                       ),
                       child: const Text(

@@ -114,7 +114,7 @@ BottomNavigationBar bottomNavbar(BuildContext context, int selectedIndex) {
     type: BottomNavigationBarType.fixed,
     currentIndex: selectedIndex,
     backgroundColor: Colors.white,
-    selectedItemColor: Colors.deepPurple,
+    selectedItemColor: Colors.blue.shade900,
     unselectedItemColor: Colors.grey[600],
     selectedLabelStyle: safeGoogleFont(
       "Source Sans 3",

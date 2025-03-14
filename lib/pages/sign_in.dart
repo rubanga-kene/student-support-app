@@ -72,7 +72,7 @@ class _homePageState extends State<LoginPage> {
                       child: Text(
                     "Enter Your Credentials",
                     style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                          color: const Color(0xFF755DC1),
+                          color: const Color(0xFF007dd8),
                           fontFamily: 'Poppins',
                           fontWeight: FontWeight.w600,
                         ),
@@ -118,7 +118,7 @@ class _homePageState extends State<LoginPage> {
                                   BorderRadius.all(Radius.circular(10)),
                               borderSide: BorderSide(
                                 width: 1,
-                                color: Color(0xFF9F7BFF),
+                                color: Color(0xFF007dd8),
                               ),
                             )),
                         style: const TextStyle(
@@ -176,7 +176,7 @@ class _homePageState extends State<LoginPage> {
                                   BorderRadius.all(Radius.circular(10)),
                               borderSide: BorderSide(
                                 width: 1,
-                                color: Color(0xFF9F7BFF),
+                                color: Color(0xFF007dd8),
                               ),
                             )),
                         style: const TextStyle(
@@ -233,7 +233,7 @@ class _homePageState extends State<LoginPage> {
                       padding: const EdgeInsets.only(
                           left: 135, right: 135, top: 10, bottom: 10),
                       decoration: BoxDecoration(
-                        color: const Color(0xFF755DC1),
+                        color: const Color(0xFF007dd8),
                         borderRadius: BorderRadius.circular(10),
                       ),
                       child: const Text(

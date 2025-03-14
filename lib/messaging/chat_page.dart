@@ -48,7 +48,7 @@ class _ChatPageState extends State<ChatPage> {
 
           ),
 
-        backgroundColor: const Color(0xff755dc1),
+        backgroundColor: const Color(0xff007dd8),
         iconTheme: const IconThemeData(color: Colors.white),
       ),
       body: Padding(

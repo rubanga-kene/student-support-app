@@ -48,7 +48,7 @@ class _ProfessionalDetailsPageState extends State<ProfessionalDetailsPage> {
               fontFamily: 'Poppins'
             )
         ),
-        backgroundColor: const Color(0xFF755DC1),
+        backgroundColor: const Color(0xFF007dd8),
         iconTheme: const IconThemeData(color: Colors.white),
       ),
       body: SingleChildScrollView(
@@ -189,7 +189,7 @@ class _ProfessionalDetailsPageState extends State<ProfessionalDetailsPage> {
                                       fontWeight: FontWeight.w600,
                                     ),
                                   ),
-                                  Icon(Icons.thumb_up_alt,color: Colors.deepPurple.shade700,),
+                                  Icon(Icons.thumb_up_alt,color: Colors.blue.shade900,),
                                   const SizedBox(width: 10),
                                   Text(
                                     '$likes',
@@ -267,7 +267,7 @@ class _ProfessionalDetailsPageState extends State<ProfessionalDetailsPage> {
                                         ? 'Like'
                                         : 'Unlike'),
                                     style: ElevatedButton.styleFrom(
-                                      foregroundColor: const Color(0xff755dc1),
+                                      foregroundColor: const Color(0xff007dd8),
                                       backgroundColor:Colors.deepPurple[50],
                                       shape: RoundedRectangleBorder(
                                         borderRadius:
@@ -291,7 +291,7 @@ class _ProfessionalDetailsPageState extends State<ProfessionalDetailsPage> {
                                 icon: const Icon(Icons.message_outlined),
                                 label: const Text('Send Message',
                                     style: TextStyle(
-                                        color: Colors.deepPurple,
+                                        color: Colors.blue,
                                         fontWeight: FontWeight.w500,
                                       fontSize: 15,
                                         fontFamily: 'Poppins'
@@ -299,7 +299,7 @@ class _ProfessionalDetailsPageState extends State<ProfessionalDetailsPage> {
 
                                 ),
                                 style: ElevatedButton.styleFrom(
-                                  foregroundColor: const Color(0xff755dc1),
+                                  foregroundColor: const Color(0xff007dd8),
                                   backgroundColor: Colors.deepPurple[50],
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(50),

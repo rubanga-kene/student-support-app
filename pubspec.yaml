@@ -111,11 +111,11 @@ flutter_launcher_icons:
   image_path: "assets/screens/icon.png"
 
 flutter_native_splash:
-    color: "#755DC1"
-    image: "assets/screens/icon.png"
+    color: "#007dd8"
+    image: "assets/screens/launcher-image.png"
     android: true
     ios: true
 
     android_12:
-      image: "assets/screens/icon.png"
-      color: "#755DC1"
+      image: "assets/screens/launcher-image.png"
+      color: "#007dd8"

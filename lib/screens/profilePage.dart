@@ -158,7 +158,7 @@ class _ProfilePageState extends State<ProfileScreen> {
               fontSize: 23,
             )
         ),
-        backgroundColor: const Color(0xFF755DC1),
+        backgroundColor: const Color(0xFF007dd8),
         iconTheme: const IconThemeData(color: Colors.white),
       ),
 
@@ -202,7 +202,7 @@ class _ProfilePageState extends State<ProfileScreen> {
                           _editProfile();
                         },
                       style: ElevatedButton.styleFrom(
-                          backgroundColor: const Color(0xFF755DC1),
+                          backgroundColor: const Color(0xFF007dd8),
                           side: BorderSide.none,
                           shape: const StadiumBorder()),
                       child: const Text("Edit Profile",

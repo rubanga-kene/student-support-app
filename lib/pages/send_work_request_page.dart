@@ -52,7 +52,7 @@ class _SendWorkRequestPageState extends State<SendWorkRequestPage> {
               fontSize: 23,
             )
         ),
-        backgroundColor: const Color(0xff755dc1),
+        backgroundColor: const Color(0xff007dd8),
         iconTheme: const IconThemeData(color: Colors.white),
       ),
       body: SingleChildScrollView(
@@ -110,7 +110,7 @@ class _SendWorkRequestPageState extends State<SendWorkRequestPage> {
                    sendWorkRequest();
                 },
                 style: ElevatedButton.styleFrom(
-                  foregroundColor: const Color(0xff755dc1),
+                  foregroundColor: const Color(0xff007dd8),
                   backgroundColor: Colors.deepPurple[50],
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(50),

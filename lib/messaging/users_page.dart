@@ -37,7 +37,7 @@ class _UserPageState extends State<UserPage> {
             },
           )
         ],
-        backgroundColor: const Color(0xFF755DC1),
+        backgroundColor: const Color(0xFF007dd8),
         iconTheme: const IconThemeData(
           color: Colors.white,
         ),

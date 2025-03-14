@@ -29,7 +29,7 @@ class MyApp24 extends StatelessWidget {
               },
             ),
           ],
-            backgroundColor: const Color(0xFF755DC1),
+            backgroundColor: const Color(0xFF007dd8),
         ),
         body: ProfessionsGrid(),
           bottomNavigationBar: bottomNavbar(context,0)
@@ -42,11 +42,11 @@ class MyApp24 extends StatelessWidget {
 
 class ProfessionsGrid extends StatelessWidget {
   final List<String> professions = [
-  'Academic Registrar',
+  'Academic Reg',
   'Portal',
   'LMS',
   'Doctor',
-  'Psychologist',
+  'Counselor',
   'Bursar',
   'IT Support',
   'Security',
@@ -56,7 +56,6 @@ class ProfessionsGrid extends StatelessWidget {
   'Custodian',
   'Student Leader',
   'PWD',
-  'Counselor',
   'Computer Dept',
   'Chemistry Dept',
   'Physics Dept',
@@ -138,7 +137,7 @@ class ProfessionCard extends StatelessWidget {
                   style:  TextStyle(
                     fontSize: 17.0,
                     fontWeight: FontWeight.w700,
-                    color: Colors.deepPurple.shade700,
+                    color: Colors.blue.shade900,
                     fontFamily: 'Poppins'
                   ),
                 ),

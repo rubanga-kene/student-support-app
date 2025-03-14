@@ -19,7 +19,7 @@ class ProfessionalListPage extends StatelessWidget {
               fontFamily: 'Poppins',
               fontSize: 23,
                 )),
-        backgroundColor: const Color(0xFF755DC1),
+        backgroundColor: const Color(0xFF007dd8),
         iconTheme: const IconThemeData(color: Colors.white),
       ),
       body: FutureBuilder(
@@ -147,7 +147,7 @@ class ProfessionalListPage extends StatelessWidget {
                               },
                               style: ElevatedButton.styleFrom(
                                 foregroundColor: Colors.white,
-                                backgroundColor: const Color(0xFF755DC1),
+                                backgroundColor: const Color(0xFF007dd8),
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(8.0),
                                 ),

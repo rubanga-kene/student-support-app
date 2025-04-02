@@ -114,14 +114,14 @@ class _ProfessionalDetailsPageState extends State<ProfessionalDetailsPage> {
                       children: [
                         Container(
                           margin: EdgeInsets.fromLTRB(
-                              0 * fem, 0 * fem, 90 * fem, 8 * fem),
+                              0 * fem, 0 * fem, 30 * fem, 8 * fem),
                           width: double.infinity,
                           child: Row(
                             // crossAxisAlignment: CrossAxisAlignment.center,
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
-                                'Proceed ',
+                                'Proceed with ${widget.professionalData['fname']} ',
                                 style: TextStyle(
                                   fontFamily: 'Poppins',
                                   fontSize: 22 * ffem,
@@ -158,10 +158,10 @@ class _ProfessionalDetailsPageState extends State<ProfessionalDetailsPage> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                'Description:',
+                                'Professional Description:',
                                 style: TextStyle(
                                   fontFamily: 'Poppins',
-                                  fontSize: 22 * ffem,
+                                  fontSize: 20 * ffem,
                                   fontWeight: FontWeight.w600,
                                 ),
                               ),

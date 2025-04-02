@@ -61,7 +61,7 @@ class _SendWorkRequestPageState extends State<SendWorkRequestPage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text('Describe the issue:',
+              const Text('Problem:',
                   style: TextStyle(
                     fontSize: 16,
                     fontFamily: 'Poppins',
@@ -72,7 +72,7 @@ class _SendWorkRequestPageState extends State<SendWorkRequestPage> {
                 maxLines: null,
                 keyboardType: TextInputType.multiline,
                 decoration: const InputDecoration(
-                  hintText: 'Enter a description of the issue',
+                  hintText: 'State the problem',
                 ),
                 textInputAction: TextInputAction.newline,
                 style: const TextStyle(
@@ -83,7 +83,7 @@ class _SendWorkRequestPageState extends State<SendWorkRequestPage> {
       
               ),
               const SizedBox(height: 16),
-              const Text('Reason:',
+              const Text('Describe the problem:',
                   style: TextStyle(
                     fontSize: 16,
                     fontFamily: 'Poppins',
@@ -93,7 +93,7 @@ class _SendWorkRequestPageState extends State<SendWorkRequestPage> {
                 keyboardType: TextInputType.text,
                 decoration: const InputDecoration(
                   // prefixText: '',
-                  hintText: 'Enter your reason',
+                  hintText: 'Enter your description',
                 ),
                 style: const TextStyle(
                   fontSize: 16,
@@ -117,7 +117,7 @@ class _SendWorkRequestPageState extends State<SendWorkRequestPage> {
                   ),
       
                 ),
-                child: const Text('Send Question',
+                child: const Text('Send Message',
                     style: TextStyle(
                       fontSize: 16,
                       fontFamily: 'Poppins',
@@ -177,7 +177,7 @@ Future<void> notifyProfessional(String description, String budget) async {
   final ChatService chatService = ChatService();
   await chatService.sendmessage(
     widget.professionalData['uid'],
-    'Description - $description, Reason $budget',
+    'The Problem:  $description,\n Problem description: $budget',
   );
 }
 

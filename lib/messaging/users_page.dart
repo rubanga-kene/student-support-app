@@ -20,10 +20,10 @@ class _UserPageState extends State<UserPage> {
       appBar: AppBar(
         title: Text("Chats",
             style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                  color: Colors.white,
-                  fontWeight: FontWeight.w600,
-                  fontFamily: 'Poppins',
-                  fontSize: 23,
+              color: Colors.white,
+              fontWeight: FontWeight.w600,
+              fontFamily: 'Poppins',
+              fontSize: 23,
             )
         ),
         actions: [
@@ -33,7 +33,7 @@ class _UserPageState extends State<UserPage> {
             onPressed: () async {
               await FirebaseAuth.instance.signOut();
               if(!mounted) return;
-                Navigator.of(context).popUntil((route) => route.isFirst);
+              Navigator.of(context).popUntil((route) => route.isFirst);
             },
           )
         ],
@@ -45,7 +45,7 @@ class _UserPageState extends State<UserPage> {
       body: _userList(),
       bottomNavigationBar: bottomNavbar(context,2),
     );
-    
+
   }
 
   Widget _userList() {
@@ -53,7 +53,7 @@ class _UserPageState extends State<UserPage> {
       stream: FirebaseFirestore.instance.collection("user").snapshots(),
       builder: (context, snapshot) {
         if (snapshot.hasError) {
-          return const Text("Error");
+          return Text("Error: ${snapshot.error}");
         }
 
         if (snapshot.connectionState == ConnectionState.waiting) {
@@ -62,35 +62,45 @@ class _UserPageState extends State<UserPage> {
           );
         }
 
+        if (!snapshot.hasData || snapshot.data == null) {
+          return const Text("No users found.");
+        }
+
         return FutureBuilder<List<DocumentSnapshot>>(
           future: _filterUsers(snapshot.data!.docs),
           builder: (context, userSnapshot) {
             if (userSnapshot.connectionState == ConnectionState.waiting) {
               return const Center(
-              child: CircularProgressIndicator(),
+                child: CircularProgressIndicator(),
               );
             }
 
+            if (userSnapshot.hasError) {
+              return Text("Error: ${userSnapshot.error}");
+            }
+
+            if (!userSnapshot.hasData || userSnapshot.data == null || userSnapshot.data!.isEmpty) {
+              return const Text("No users found"); // Or some other appropriate message
+            }
+
             return ListView(
-              children: userSnapshot.data!
-                    .map<Widget>((doc) => Container(
-              margin: const EdgeInsets.all(3.0),
-              padding: const EdgeInsets.symmetric(vertical: 8.0),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(10),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.grey.withOpacity(0.5),
-                    spreadRadius: 2,
-                    blurRadius: 5,
-                    offset: const Offset(0, 2),
-                  ),
-                ],
-              ),
-              child: _userListItem(doc),
-            )
-              ).toList(),
+              children: userSnapshot.data!.map<Widget>((doc) => Container(
+                margin: const EdgeInsets.all(3.0),
+                padding: const EdgeInsets.symmetric(vertical: 8.0),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(10),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.5),
+                      spreadRadius: 2,
+                      blurRadius: 5,
+                      offset: const Offset(0, 2),
+                    ),
+                  ],
+                ),
+                child: _userListItem(doc),
+              )).toList(),
             );
           },
         );
@@ -99,6 +109,10 @@ class _UserPageState extends State<UserPage> {
   }
 
   Widget _userListItem(DocumentSnapshot document) {
+    if (!document.exists || document.data() == null) {
+      return const Text("User data not available"); // Or a placeholder
+    }
+
     Map<String, dynamic> data = document.data()! as Map<String, dynamic>;
 
     Future<void> navigateToChat() async {
@@ -122,34 +136,50 @@ class _UserPageState extends State<UserPage> {
       }
     }
 
-     return ListTile(
-       visualDensity: VisualDensity.compact,
-        onTap: navigateToChat,
-       title: Text("${data['fname']} ${data['lName']}",
-         style: const TextStyle(
-                     fontSize: 18,
-                    fontWeight: FontWeight.w600,
-                    fontFamily: 'Poppins',
-                   ),
-         selectionColor: Colors.deepPurple[50],
-       ),
-       leading: CircleAvatar(
-                 backgroundImage: NetworkImage(data["imageUrl"] ?? 'assets/images/screens/profile.png'),
-                 radius: 30.0,
-               ),
-     );
+    return ListTile(
+      visualDensity: VisualDensity.compact,
+      onTap: navigateToChat,
+      title: Text("${data['fname'] ?? ''} ${data['lName'] ?? ''}",
+        style: const TextStyle(
+          fontSize: 18,
+          fontWeight: FontWeight.w600,
+          fontFamily: 'Poppins',
+        ),
+        selectionColor: Colors.deepPurple[50],
+      ),
+      leading: CircleAvatar(
+        backgroundImage: NetworkImage(data["imageUrl"] ?? 'assets/images/screens/profile.png'),
+        radius: 30.0,
+      ),
+    );
   }
 
   Future<List<DocumentSnapshot>> _filterUsers(
-    List<DocumentSnapshot> users,
-  ) async {
+      List<DocumentSnapshot> users,
+      ) async {
     List<DocumentSnapshot> filteredUsers = [];
 
-    for (var user in users) {
-      bool hasMessages = await checkIfMessagesExist(user["uid"]);
-      if (hasMessages) {
-        filteredUsers.add(user);
+    try {
+      for (var user in users) {
+        // Check if user document exists before accessing its fields
+        if (user.exists && user.data() != null) {
+          final userId = user["uid"];
+          if (userId != null) {
+            bool hasMessages = await checkIfMessagesExist(userId);
+            if (hasMessages) {
+              filteredUsers.add(user);
+            }
+          } else {
+            print("User ID is null for document: ${user.id}");
+          }
+
+        }
       }
+    } catch (e) {
+      print("Error filtering users: $e");
+      // Consider logging the error to a service like Crashlytics
+
+      // Return an empty list instead of null
     }
     return filteredUsers;
   }
@@ -164,11 +194,11 @@ class _UserPageState extends State<UserPage> {
 
     // Use Firestore to check if there are messages sent or received with the user
     QuerySnapshot<Map<String, dynamic>> messagesSnapshot =
-        await FirebaseFirestore.instance
-            .collection('user')
-            .doc(chatRoomId)
-            .collection('messages')
-            .get();
+    await FirebaseFirestore.instance
+        .collection('user')
+        .doc(chatRoomId)
+        .collection('messages')
+        .get();
 
     return messagesSnapshot.docs.isNotEmpty;
   }

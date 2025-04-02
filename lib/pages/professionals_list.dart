@@ -12,7 +12,7 @@ class ProfessionalListPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('${selectedProfession}s',
+        title: Text('${selectedProfession}',
             style: Theme.of(context).textTheme.headlineMedium?.copyWith(
                   color: Colors.white,
                   fontWeight: FontWeight.w600,
